@@ -35,7 +35,7 @@ namespace WizKids.API.Service
                     "en-DK" => "da-DK",
                     _ => "en-GB",
                 }) + "&text=I%20like%20" + query,
-                TokenBearer = "MjAxOS0xMS0yOQ==.dXJAaWZzLmFlcm8=.MmQyMjBhZDE2ZmMyZDc0MjY3ZDBkZmFkNjViZWQzMWE="
+                TokenBearer = "MjAxOS0xMi0wMQ==.c2V1YmFpZEBob3RtYWlsLmNvbQ==.MTQzNTc1YmQxYmQyNzgwZTUzYTVhNjYyZDAxYjA1NGI="
             };
             var list = JsonConvert.DeserializeObject<List<string>>(restServiceClient.makeRequest<string>(true));
                        
