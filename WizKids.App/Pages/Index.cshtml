@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+ 
+<div class="text-center">
+    <h1 class="display-4">Welcome To WizKids</h1>
+  
+</div>
+<div class="search-bar">
+    <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()" placeholder="Search">
+    </div>
+<div>
+    <ul id="wrapper"></ul>
+    <ul id="dbwrapper"></ul>
+</div>
+<script>
+
+    function searchFunction() {
+        var input = $("#myinput").val()
+
+        if (input.length > 1) {
+            jQuery.get("https://localhost:44372/api/wizkids/GetApi/?text=" + input, function (data, status)
+            {
+                                         
+              $("#wrapper").empty();
+              $.each( data, function(key,value ) {
+                 $("#wrapper").append("<li><a href='#'>" + value + "</a></li>");
+              });
+
+            });
+           jQuery.get("https://localhost:44372/api/wizkids/GetDB/?text=" + input, function (data, status)
+            {
+                                         
+              $("#dbwrapper").empty();
+              $.each( data, function(key,value ) {
+                 $("#dbwrapper").append("<li>" + value + "</li>");
+              });
+
+          });
+        }        
+        if (input.length == "" || input.length === "" ) {
+            $("#wrapper").empty();
+            $("#dbwrapper").empty();
+        }
+}
+
+</script>
